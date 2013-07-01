@@ -1,6 +1,7 @@
 # scla for Impatient #
 
 ## 目录 ##
+
 [1.基础](#1)
 
 [2.控制结构和函数](#2)
@@ -10,6 +11,13 @@
 [4.映射和元组 （Map, tuple）](#4)
 
 [5. 类](#5)
+
+[6. 对象](#6)
+
+[7. 包和引入](#7)
+
+[8. 继承](#8)
+
 
 ----------
 
@@ -227,3 +235,81 @@ scala中表达式都有值，语句块也有值，语句块的值就是最后一
     在Scala中，几乎可在任何语法结构中内嵌入任何语法结构。
 
     Scala与Java不同，在Java中内部类从属于内部类，而Scala中每个对象都有自己的内部类。对于内部类的构造也不同，Java:  `chatter.new Member()`。  Scala：　`new Chatter.Member`。
+
+### <a name="6">6. 对象</a> ###
+
+- 单例对象
+    
+    对象的构建方法在对象第一次被使用时被调用。
+
+- 伴生对象
+
+    伴生类与伴生对象可以互相访问私有特性，它们必须存在于同一个源文件中，但并不在相同的作用域中。
+
+- 扩展类或特质的对象
+
+    对象可以扩展类以及一个或多个特质，基结果是一个扩展了指定类以及特质的类的对象(单例对象是扩展类或特质的实例)，同时拥有在对象定义中给出的所有性。
+
+- 对象的apply方法
+
+- 应用程序对象App
+
+    App特质扩展自另一个特质DelayedInit，编译器对该特质有特殊的处理。所有带有该特质的类，其初始化方法都会被挪到delayedInit方法中。App特质的main方法捕获命令行参数，调用delayedInit方法，并且还可以根据要求打印出逝去的时间。
+        
+- 枚举
+    
+    定义一个扩展Enumeration类的对象并以Value方法调用初始化枚举中的所有可选值。
+
+        Object TrafficLightColor extends Enumeration {
+            type TrafficLightColor = Value
+            val Red, Yellow, Creen = Value
+        }
+
+        #枚举值的ID可通过id方法返回，名称通过toString方法返回。
+        for (c <- TrafficLightColor.values) println(c.id + ": " + c)
+
+        #可以通过枚举的ID或名称来进行查找定位，以下两段代码都输出TrafficLightColor.Red对象
+        TrafficLightColor(0) //调用Enumeration.apply方法
+        TrafficLightColor.withName("Red")
+
+### <a name="7">7. 包和引入</a> ###
+
+- 包
+    
+    包与源文件没有强制的关联关系。包可以任何位置引入。
+
+- 作用域规则
+
+    包可以嵌套所有父包的内容都在作用域内。可以使用相对路径引入包；绝对包名，以_root_开始。如：`new _root_.scala.collection.mutable.ArrayBuffer[Int]`
+
+- 串联式包语句
+
+    可用于限定可见成员
+
+- 文件顶部标记法
+
+- 包对象
+    
+    包可以包含类、对象和特质，但不能包含函数或变量的定义。所以引入了包对象。
+
+        package object People {
+            val defaultName = "test"
+        }
+
+- 包可见性
+
+- 引入
+
+- 任何地方都可以声明引入
+
+- 重命名和隐藏方法
+
+        import java.util.{HashMap => JavaHashMap}
+        import java.util.{HashMap => _, _}
+
+- 隐式引入
+    
+        # 隐式引入的代码
+        import java.lang._
+        import scala._
+        import Predef._
