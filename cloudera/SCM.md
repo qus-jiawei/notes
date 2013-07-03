@@ -47,11 +47,8 @@
 
 - SCM结构
 
-    SCM分为server与agent两部分及数据库（自带更改过的嵌入Postgresql）
-
-    1. Server端主体使用Java实现。
-
-    
+    SCM分为server与agent两部分及数据库（自带更改过的嵌入Postgresql）。
+    1. Server端主体使用Java实现。    
     2. Agent端主体使用Python, 服务的启动通过调用相应的shell脚本进行启动，如果启动失败会重复4次调用启动脚本。
 
 
