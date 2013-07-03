@@ -313,3 +313,55 @@ scala中表达式都有值，语句块也有值，语句块的值就是最后一
         import java.lang._
         import scala._
         import Predef._
+
+### <a name="8">8. 继承</a> ###
+
+- 扩展类
+
+    scala中final用于修改类，则类不能被继承，用于修改方法或字段则它们不能被重写。重写非抽像方法或字段时必须使用override修饰符。
+
+- 重写方法
+
+    使用override修饰更有利于解决`易违约基类问题`。
+
+- 类型检查和转换
+
+            Scala                           Java
+            obj.isInstanceOf[C1]            obj instanceof C1
+            obj.asInstanceOf[C1]            (C1)obj
+            classOf[C1]                     C1.class
+
+- 受保护字段和方法
+
+- 超类的构造
+
+    只有主构造器可以调用超类的构造器。
+
+- 重写字段
+
+        - def只能重写另一个def
+        - val只能重写另一个val或不带参数的def
+        - var只能重写另一个抽象的var
+
+- 匿名子类
+
+        #如：
+        val alien = new Person("Fred") {
+            def greeting = "Greetings, Earthing! My name is Fred."
+        }
+
+- 抽象类
+
+- 抽象字段
+
+    抽象字段就是一个没有初始值的字段。
+
+- 构造顺序和提前定义
+
+        class Ant extends {
+            override val range = 2
+        } with Creature
+
+- Scala继承层级
+
+- 对象相等性
