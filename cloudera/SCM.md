@@ -51,7 +51,7 @@
 
 - SCM结构
 
-    SCM分为server与agent两部分及数据库（自带更改过的嵌入Postgresql）。
+    SCM分为server与agent两部分及数据库（自带更改过的嵌入Postgresql）。它主要做三件事件：1.管理监控集群主机；2.统一管理配置；3.管理维护Hadoop平台系统。实现采用C/S结构，Agent为客户端负责执行服务端发来的命令，执行方式一般为使用python调用相应的shell脚本。Server端为Java REST服务，提供REST API，Web管理端通过REST API调用Server端功能，Web界面使用Knockout富客户端的方式。
     1. Server端主体使用Java实现。    
     2. Agent端主体使用Python, 服务的启动通过调用相应的shell脚本进行启动，如果启动失败会重复4次调用启动脚本。
     3. Agent与Server保持心跳，使用thrift为RPC框架。
