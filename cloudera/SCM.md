@@ -51,11 +51,6 @@
     2. Agent端主体使用Python, 服务的启动通过调用相应的shell脚本进行启动，如果启动失败会重复4次调用启动脚本。
 
 
-5. 服务启动
-
-    - 服务启动为重试4次.
-
-
 5. 卸载
 
     `sudo /usr/share/cmf/uninstall-scm-express.sh`, 然后删除`/var/lib/cloudera-scm-server-db/`目录，不然下次安装可能不成功。
