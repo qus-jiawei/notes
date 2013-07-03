@@ -3,7 +3,6 @@
 ### 配置 ###
 
 1. 安装目录
-
     - `/var/log/cloudera-scm-installer`: 安装日志目录
     - `/var/log/%` : 相关日志文件
     - `/usr/share/cmf/`： 程序安装目录
@@ -35,7 +34,6 @@
         SCM为每个服务进程生成独立的配置目录（文件）。所有配置统一在服务端查询数据统一生成（因为scm数据库只能在localhost下访问），再由agent通过网络下载包含配置的zip包到本地解压到指定的目录。
 
 3. 数据库(这里使用默认的数据名)
-
     - scm: cloudera manager数据库,存储cloudera manager运行所需要的信息：配置，主机，启动脚本等。
 
     - amon:
