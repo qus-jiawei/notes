@@ -2,7 +2,7 @@
 
 ### 配置 ###
 
-1. 安装目录
+- 安装目录
     - `/var/log/cloudera-scm-installer`: 安装日志目录
     - `/var/log/%` : 相关日志文件
     - `/usr/share/cmf/`： 程序安装目录
@@ -15,7 +15,11 @@
     - `/opt/cloudera/parcel-repo/` : 下载的服务软件包数据，数据格式为parcels
     - `/opt/cloudera/parcel-cache/` : 下载的服务软件包缓存数据
 
-2. Hadoop配置文件
+- 本地源安装
+    
+    
+
+- Hadoop配置文件
     
     配置文件放置于`/var/run/cloudera-scm-agent/process/`目录下。如：`/var/run/cloudera-scm-agent/process/193-hdfs-NAMENODE/core-site.xml`。这些配置文件是通过Cloudera Manager启动相应服务（如HDFS）启动时生成的，内容从数据库中获得（即通过界面配置的参数）。
     
@@ -33,7 +37,7 @@
     
         SCM为每个服务进程生成独立的配置目录（文件）。所有配置统一在服务端查询数据统一生成（因为scm数据库只能在localhost下访问），再由agent通过网络下载包含配置的zip包到本地解压到指定的目录。
 
-3. 数据库(这里使用默认的数据名)
+- 数据库(这里使用默认的数据名)
     - scm: cloudera manager数据库,存储cloudera manager运行所需要的信息：配置，主机，启动脚本等。
     - amon:
     - hmon:
@@ -41,7 +45,7 @@
     - smon:
     - nav:
 
-4. SCM结构
+- SCM结构
 
     SCM分为server与agent两部分及数据库（自带更改过的嵌入Postgresql）
 
@@ -51,15 +55,15 @@
     2. Agent端主体使用Python, 服务的启动通过调用相应的shell脚本进行启动，如果启动失败会重复4次调用启动脚本。
 
 
-5. 卸载
+- 卸载
 
     `sudo /usr/share/cmf/uninstall-scm-express.sh`, 然后删除`/var/lib/cloudera-scm-server-db/`目录，不然下次安装可能不成功。
 
-6. 权限
+- 权限
 
     SCM在安装各服务时会为各服务创建相应的用户，出现问题时首先查看是否为权限问题。
 
-7. 数据库
+- 数据库
 
     CM数据（scm）： `psql -U scm -h localhost -p 7432 -W `。 密码： `66pSWqfKO0` 这个数据库最为重要，它存储了服务的配置、角色、配置历史、用户、运行的进程。
 
@@ -76,15 +80,15 @@
          template1 | cloudera-scm | UTF8     | en_US.UTF8 | en_US.UTF8 | =c/"cloudera-scm"
                                                                        : "cloudera-scm"=CTc/"cloudera-scm"
 
-8. 升级
+- 升级
 
     在SCM中可以通过界面向导升级相关服务。升级过程为三步：1.下载服务软件包；2.把所下载的服务软件包分发到集群中受管的机器上；3. 安装服务软件包，使用软链接的方式把服务程序目录链接到新安装的软件包目录上。
 
-9. 监控
+- 监控
 
     todo
 
-10. 告警
+- 告警
 
     todo
     
