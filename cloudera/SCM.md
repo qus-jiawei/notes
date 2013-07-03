@@ -35,17 +35,11 @@
 
 3. 数据库(这里使用默认的数据名)
     - scm: cloudera manager数据库,存储cloudera manager运行所需要的信息：配置，主机，启动脚本等。
-
     - amon:
-
     - hmon:
-
     - rman:
-
     - smon:
-
     - nav:
-
 
 4. SCM结构
 
