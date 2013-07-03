@@ -4,7 +4,7 @@
 
 - 安装目录
     - `/var/log/cloudera-scm-installer`: 安装日志目录
-    - `/var/log/%` : 相关日志文件
+    - `/var/log/%` : 相关日志文件（服务的及scm的）
     - `/usr/share/cmf/`： 程序安装目录
     - `/usr/lib64/cmf/` : agent程序代码
     - `/var/lib/cloudera-scm-server-db/data`： 内嵌数据库目录
@@ -29,6 +29,10 @@
 
     > scm数据被配置成只能从localhost访问，如果需要从外部查看数据，数据修改`vim /var/lib/cloudera-scm-server-db/data/pg_hba.conf`文件,之后重启数据库。运行数据库的用户为cloudera-scm
 
+- 查看配置内容
+    1. 直接查询scm.configs数据表的内容。
+    2. 访问REST API： http://hostname:7180/api/v4/cm/deployment。
+
 - 配置修改
 
     SCM对于需要修改的配置预先定义，对于没有预先定义的配置,则通过在高级配置项中使用xml配置片段的方式进行配置。而对于/etc/hadoop/下的配置文件进行的修改不会生效。
@@ -50,6 +54,7 @@
     SCM分为server与agent两部分及数据库（自带更改过的嵌入Postgresql）。
     1. Server端主体使用Java实现。    
     2. Agent端主体使用Python, 服务的启动通过调用相应的shell脚本进行启动，如果启动失败会重复4次调用启动脚本。
+    3. Agent与Server保持心跳，使用thrift为RPC框架。
 
 
 - 卸载
