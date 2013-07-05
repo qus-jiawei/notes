@@ -4,7 +4,7 @@
 
 - 安装目录
     - `/var/log/cloudera-scm-installer`: 安装日志目录
-    - `/var/log/%` : 相关日志文件（服务的及scm的）
+    - `/var/log/*` : 相关日志文件（服务的及scm的）
     - `/usr/share/cmf/`： 程序安装目录
     - `/usr/lib64/cmf/` : agent程序代码
     - `/var/lib/cloudera-scm-server-db/data`： 内嵌数据库目录
