@@ -4,7 +4,7 @@
 
 - 安装目录
     - `/var/log/cloudera-scm-installer`: 安装日志目录
-    - `/var/log/%` : 相关日志文件（服务的及scm的）
+    - `/var/log/*` : 相关日志文件（服务的及scm的）
     - `/usr/share/cmf/`： 程序安装目录
     - `/usr/lib64/cmf/` : agent程序代码
     - `/var/lib/cloudera-scm-server-db/data`： 内嵌数据库目录
@@ -117,6 +117,8 @@
 
     - scm数据被配置成只能从localhost访问，如果需要从外部查看数据，数据修改`vim /var/lib/cloudera-scm-server-db/data/pg_hba.conf`文件,之后重启数据库。运行数据库的用户为cloudera-scm
 
+
 - 查看进程所属用户
 
     `ps -eo pid,user,group,euser,egroup,cmd`
+
