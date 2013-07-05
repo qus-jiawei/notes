@@ -116,3 +116,7 @@
 - 开启postgresql远程访问
 
     - scm数据被配置成只能从localhost访问，如果需要从外部查看数据，数据修改`vim /var/lib/cloudera-scm-server-db/data/pg_hba.conf`文件,之后重启数据库。运行数据库的用户为cloudera-scm
+
+- 查看进程所属用户
+
+    `ps -eo pid,user,group,euser,egroup,cmd`
